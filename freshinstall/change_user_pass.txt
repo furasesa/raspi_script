@@ -1,0 +1,39 @@
+1. Enable SSH
+
+2. Enable root -> sudo passwd
+
+3. Open the SSH configuration file:
+sudo nano /etc/ssh/sshd_config
+
+4. Find the line:
+#PermitRootLogin prohibit-password
+Replace it with:
+PermitRootLogin yes
+Save and exit.
+
+5. Restart the SSH service to apply changes:
+sudo service ssh restart
+
+
+6. Change the default username
+Log in with root.
+You can use the method you prefer depending on your installed version (open a session or use SSH).
+In a terminal or SSH session, type the following command:
+usermod -l <new_user> pi
+
+For example:
+usermod -l patrick pi
+Rename the home directory.
+We can do this with:
+usermod -m -d /home/<new_user> <new_user>
+
+For example:
+usermod -m -d /home/patrick patrick
+
+6. Revert Enable root
+You can also disable the root user completely with:
+sudo passwd -l root
+
+change HOSTNAME
+sudo raspi-config
+reboot
